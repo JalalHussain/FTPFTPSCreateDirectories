@@ -11,16 +11,42 @@ import java.lang.reflect.Method;
 import java.net.Socket;
 import java.util.Locale;
 
+/**
+ * <pre>
+ *  The FTPS client of apache have some issues in socket opening and data transfer hence it
+ *  can be extended and can be used for proper functioning.
+ * </pre>
+ *
+ * @author Barzi
+ */
 public class ExtendedFTPSClient extends FTPSClient {
 
+    /**
+     * Default Constructor.
+     */
     public ExtendedFTPSClient() {
         super("TLS", false);
     }
 
+    /**
+     * <pre>
+     *     Parameterize constructor.
+     * </pre>
+     *
+     * @param isImplicit
+     */
     public ExtendedFTPSClient(boolean isImplicit) {
         super("TLS", isImplicit);
     }
 
+    /**
+     * <pre>
+     *     This will prepare the data socket.
+     * </pre>
+     *
+     * @param socket The socket.
+     * @throws IOException Throws IOException.
+     */
     protected void _prepareDataSocket_(final Socket socket) throws IOException {
         if (socket instanceof SSLSocket) {
             // Control socket is SSL

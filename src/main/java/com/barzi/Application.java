@@ -8,10 +8,23 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 import java.util.function.Consumer;
 
+/**
+ * The main class having main method.
+ *
+ * @author Barzi
+ */
 public class Application {
 
     private static final Logger logger = LoggerFactory.getLogger(Application.class); //Logger instance for logging.
-    public static void main(String args[]){
+
+    /**
+     * <pre>
+     *     The main method.
+     * </pre>
+     *
+     * @param args Command line arguments.
+     */
+    public static void main(String args[]) {
         logger.info("Running application FTPFTPSCreateDirectories");
         String host;
         int port;
@@ -20,15 +33,15 @@ public class Application {
         String dirs;
         try {
             logger.info("Setting configured credentials");
-            host= ConfigTag.getProperty("server.host");
-            port=Integer.parseInt(ConfigTag.getProperty("server.port"));
-            user=ConfigTag.getProperty("server.user");
-            password=ConfigTag.getProperty("server.passwor");
-            dirs=ConfigTag.getProperty("server.directories");
+            host = ConfigTag.getProperty("server.host");
+            port = Integer.parseInt(ConfigTag.getProperty("server.port"));
+            user = ConfigTag.getProperty("server.user");
+            password = ConfigTag.getProperty("server.passwor");
+            dirs = ConfigTag.getProperty("server.directories");
             logger.info("Credentials are " +
-                    "[ Host : "+host+" Port :"+port+" User : "+user+" Password : "+password+" Directories : "+dirs+"]");
-        }catch (Exception e){
-        logger.error("Exception occured while setting credentials ",e);
+                    "[ Host : " + host + " Port :" + port + " User : " + user + " Password : " + password + " Directories : " + dirs + "]");
+        } catch (Exception e) {
+            logger.error("Exception occured while setting credentials ", e);
         }
 
         logger.info("Directory creation task started...");
